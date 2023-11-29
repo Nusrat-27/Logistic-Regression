@@ -1,0 +1,39 @@
+#import library
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#dataset upload
+from google.colab import files
+uploded = files.upload()
+
+#read file
+df = pd.read_excel('LR_data.xlsx')
+
+#show dataset
+df.head()
+
+#data of X,Y
+X = df[['Age']]
+Y = df [['HA']]
+
+#show graph
+plt.plot(X,Y)
+plt.show()
+
+#data train & test
+from sklearn.model_selection import train_test_split
+X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.2)
+
+X_test
+
+#import LA Library
+from sklearn.linear_model import LinearRegression
+
+regressor = LinearRegression()
+
+#model train
+regressor.fit(X_train,Y_train)
+
+#predict
+regressor.predict(X_train)
